@@ -33,10 +33,8 @@ def read_excel_file(file_path='', sheet_name='Sheet1'):
     Parce que je veux controler ce que je fais :D"""
     wb = openpyxl.load_workbook(file_path)
     ws = wb[sheet_name]
-    data = list(zip(*ws.columns))
-    column_names = [elm.value for elm in data[0]]
-    values = [[k.value for k in elm] for elm in data[1:]]
-    return column_names, values
+    values = [[k.value for k in elm] for elm in zip(*ws.columns)]
+    return values
 
 
 def insert_data(values):
@@ -151,7 +149,7 @@ def operations(df):
 
 if __name__ == '__main__':
     file_path, sheet_name = 'dataset.xlsx', 'Sheet1'
-    columns, values = read_excel_file(file_path, sheet_name)
+    columns, *values = read_excel_file(file_path, sheet_name)
     insert_data(values)
     data = read_data()
     df = create_df(data)
