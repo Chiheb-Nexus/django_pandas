@@ -1,6 +1,6 @@
 backcall==0.1.0
 decorator==4.4.0
-Django==2.2.13
+Django==2.2.18
 entrypoints==0.3
 et-xmlfile==1.0.1
 flake8==3.7.7
